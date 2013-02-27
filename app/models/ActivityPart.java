@@ -1,5 +1,7 @@
 package models;
 
+import static javax.persistence.DiscriminatorType.STRING;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,7 +13,7 @@ import play.db.ebean.Model;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="PART_TYPE")
+@DiscriminatorColumn(name="PART_TYPE",  discriminatorType=STRING)
 public abstract class ActivityPart extends Model {
 	private static final long serialVersionUID = 5064213707081067119L;
 

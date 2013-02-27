@@ -44,6 +44,13 @@ public class SpeechTherapyActivity extends Model {
     @OneToMany(cascade=CascadeType.ALL) 
 	public List<ActivityPart> parts;
 
+    @Override
+    public void delete() {
+    	for (ActivityPart part : parts) {
+			part.delete();
+		}
+    	super.delete();
+    }
 	public static Finder<Long, SpeechTherapyActivity> find = new Finder<Long, SpeechTherapyActivity>(
 			Long.class, SpeechTherapyActivity.class);
 

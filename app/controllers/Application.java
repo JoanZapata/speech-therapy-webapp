@@ -6,19 +6,19 @@ import models.SpeechTherapyActivity;
 import models.SpeechTherapyActivity.Type;
 import models.activities.TextToImagesActivityPart;
 import models.activities.TextToImagesItem;
+import play.db.ebean.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.index;
 
 public class Application extends Controller {
 
+	@Transactional 
 	public static Result activities() {
-		
-		//List<SpeechTherapyActivity> all = SpeechTherapyActivity.find.all();
-		//for (SpeechTherapyActivity speechTherapyActivity : all) {
-		//	speechTherapyActivity.delete();
-		//}
+		List<SpeechTherapyActivity> all = SpeechTherapyActivity.find.all();
+		for (SpeechTherapyActivity speechTherapyActivity : all) {
+			speechTherapyActivity.delete();
+		}
 
 		addActivity();
 
@@ -63,7 +63,7 @@ public class Application extends Controller {
 	}
 
 	public static Result index() {
-		return ok(index.render("Your new application is ready."));
+		return ok("");
 	}
 
 }
