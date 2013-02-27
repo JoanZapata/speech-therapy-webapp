@@ -1,14 +1,68 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import java.util.List;
 
-import views.html.*;
+import models.SpeechTherapyActivity;
+import models.SpeechTherapyActivity.Type;
+import models.activities.TextToImagesActivityPart;
+import models.activities.TextToImagesItem;
+import play.libs.Json;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
 public class Application extends Controller {
-  
-    public static Result index() {
-        return ok(index.render("Your new application is ready."));
-    }
-  
+
+	public static Result activities() {
+		
+		List<SpeechTherapyActivity> all = SpeechTherapyActivity.find.all();
+		for (SpeechTherapyActivity speechTherapyActivity : all) {
+			speechTherapyActivity.delete();
+		}
+		addActivity();
+
+		return ok(Json.toJson(SpeechTherapyActivity.find.all()));
+	}
+
+	private static void addActivity() {
+		SpeechTherapyActivity activity = new SpeechTherapyActivity();
+		activity.name = "Repérage des syllabes cibles";
+		activity.description = "Retrouver le mot qui contient la syllabe présentée";
+		activity.pictureUrl = "http://officeimg.vo.msecnd.net/en-us/images/MH900237619.jpg";
+		activity.type = Type.TEXT_TO_IMAGES;
+
+		activity.save();
+		
+		TextToImagesActivityPart textToImagesActivityPart = new TextToImagesActivityPart();
+		textToImagesActivityPart.text = "mo";
+		TextToImagesItem item;
+
+		item = new TextToImagesItem();
+		item.name = "locomotive";
+		item.pictureUrl = "http://officeimg.vo.msecnd.net/en-us/images/MH900237619.jpg";
+		textToImagesActivityPart.activityItems.add(item);
+
+		item = new TextToImagesItem();
+		item.name = "caméra";
+		item.pictureUrl = "http://officeimg.vo.msecnd.net/en-us/images/MH900237619.jpg";
+		textToImagesActivityPart.activityItems.add(item);
+
+		item = new TextToImagesItem();
+		item.name = "domino";
+		item.pictureUrl = "http://officeimg.vo.msecnd.net/en-us/images/MH900237619.jpg";
+		textToImagesActivityPart.activityItems.add(item);
+
+		item = new TextToImagesItem();
+		item.name = "tableau";
+		item.pictureUrl = "http://officeimg.vo.msecnd.net/en-us/images/MH900237619.jpg";
+		textToImagesActivityPart.activityItems.add(item);
+
+		activity.parts.add(textToImagesActivityPart);
+		activity.save();
+	}
+
+	public static Result index() {
+		return ok(index.render("Your new application is ready."));
+	}
+
 }
