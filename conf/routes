@@ -4,4 +4,4 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET		/activities					controllers.Application.activities()
+GET		/activities					controllers.Application.activities(callback: String)

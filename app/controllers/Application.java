@@ -8,13 +8,14 @@ import models.activities.TextToImagesActivityPart;
 import models.activities.TextToImagesItem;
 import play.db.ebean.Transactional;
 import play.libs.Json;
+import play.libs.Jsonp;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 public class Application extends Controller {
 
 	@Transactional 
-	public static Result activities() {
+	public static Result activities(String callback) {
 		List<SpeechTherapyActivity> all = SpeechTherapyActivity.find.all();
 		for (SpeechTherapyActivity speechTherapyActivity : all) {
 			speechTherapyActivity.delete();
@@ -22,7 +23,7 @@ public class Application extends Controller {
 
 		addActivity();
 
-		return ok(Json.toJson(SpeechTherapyActivity.find.all()));
+		return ok(Jsonp.jsonp(callback, Json.toJson(SpeechTherapyActivity.find.all())));
 	}
 
 	private static void addActivity() {
