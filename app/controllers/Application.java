@@ -15,10 +15,11 @@ public class Application extends Controller {
 
 	public static Result activities() {
 		
-		List<SpeechTherapyActivity> all = SpeechTherapyActivity.find.all();
-		for (SpeechTherapyActivity speechTherapyActivity : all) {
-			speechTherapyActivity.delete();
-		}
+		//List<SpeechTherapyActivity> all = SpeechTherapyActivity.find.all();
+		//for (SpeechTherapyActivity speechTherapyActivity : all) {
+		//	speechTherapyActivity.delete();
+		//}
+
 		addActivity();
 
 		return ok(Json.toJson(SpeechTherapyActivity.find.all()));
