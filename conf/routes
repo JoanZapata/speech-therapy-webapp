@@ -5,3 +5,6 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET		/activities					controllers.Application.activities(callback: String)
+POST	/activity					controllers.Application.addActivity(callback: String)
+GET		/activity					controllers.Application.activity(id: Long, callback: String)
+GET 	/addActivity				controllers.Application.addTestActivity()

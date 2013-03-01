@@ -11,6 +11,10 @@ create table activity_part (
   constraint pk_activity_part primary key (id))
 ;
 
+create table category (
+  name                      varchar(255))
+;
+
 create table speech_therapy_activity (
   id                        bigint not null,
   name                      varchar(255),
@@ -49,6 +53,8 @@ create index ix_text_to_images_item_activit_2 on text_to_images_item (text_to_im
 SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists activity_part;
+
+drop table if exists category;
 
 drop table if exists speech_therapy_activity;
 

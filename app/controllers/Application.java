@@ -16,17 +16,23 @@ public class Application extends Controller {
 
 	@Transactional 
 	public static Result activities(String callback) {
-		List<SpeechTherapyActivity> all = SpeechTherapyActivity.find.all();
-		for (SpeechTherapyActivity speechTherapyActivity : all) {
-			speechTherapyActivity.delete();
-		}
-
-		addActivity();
-
 		return ok(Jsonp.jsonp(callback, Json.toJson(SpeechTherapyActivity.find.all())));
 	}
+	
+	@Transactional 
+	public static Result activity(Long id, String callback) {
+		return ok(Jsonp.jsonp(callback, Json.toJson(SpeechTherapyActivity.find.byId(id))))	;
+	}
 
-	private static void addActivity() {
+	@Transactional 
+	public static Result addActivity(String callback) {
+		SpeechTherapyActivity activity = Json.fromJson(request().body().asJson(), SpeechTherapyActivity.class);
+		activity.save();
+		return ok();
+	}
+	
+	@Transactional 
+	public static Result addTestActivity() {
 		SpeechTherapyActivity activity = new SpeechTherapyActivity();
 		activity.name = "Repérage des syllabes cibles";
 		activity.description = "Retrouver le mot qui contient la syllabe présentée";
@@ -61,6 +67,8 @@ public class Application extends Controller {
 
 		activity.parts.add(textToImagesActivityPart);
 		activity.save();
+		
+		return ok();
 	}
 
 	public static Result index() {
