@@ -1,6 +1,3 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
-
 # --- !Ups
 
 create table activity_part (
@@ -50,17 +47,11 @@ create index ix_text_to_images_item_activit_2 on text_to_images_item (text_to_im
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
-
-drop table if exists activity_part;
-
-drop table if exists category;
-
-drop table if exists speech_therapy_activity;
 
 drop table if exists text_to_images_item;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists activity_part;
+drop table if exists speech_therapy_activity;
+drop table if exists category;
 
 drop sequence if exists activity_part_seq;
 
