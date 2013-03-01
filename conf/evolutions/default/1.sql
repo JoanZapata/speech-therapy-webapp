@@ -43,10 +43,7 @@ create index ix_activity_part_speech_therap_1 on activity_part (speech_therapy_a
 alter table text_to_images_item add constraint fk_text_to_images_item_activit_2 foreign key (text_to_images_activity_part_id) references activity_part (id) on delete restrict on update restrict;
 create index ix_text_to_images_item_activit_2 on text_to_images_item (text_to_images_activity_part_id);
 
-
-
 # --- !Downs
-
 
 drop table if exists text_to_images_item;
 drop table if exists activity_part;
