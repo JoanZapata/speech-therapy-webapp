@@ -36,6 +36,9 @@ public class SpeechTherapyActivity extends Model {
 	public Type type;
 
 	@Constraints.Required
+	public Category category;
+
+	@Constraints.Required
 	public Date creationDate = new Date();
 
 	@Constraints.Required

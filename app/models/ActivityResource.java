@@ -1,4 +1,4 @@
-package models.activities;
+package models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +7,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 @Entity
-public class TextToImagesItem extends Model {
+public class ActivityResource extends Model {
 	private static final long serialVersionUID = 6370929822817527782L;
 
 	@Id
@@ -16,6 +16,6 @@ public class TextToImagesItem extends Model {
 	
 	public String name;
 	
-	public String pictureUrl;
+	public String resourceUrl;
 	
 }

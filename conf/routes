@@ -3,8 +3,9 @@
 # ~~~~
 
 # Home page
+OPTIONS	/*url						controllers.Application.options(url)
 GET     /                           controllers.Application.index()
-GET		/activities					controllers.Application.activities(callback: String)
-POST	/activity					controllers.Application.addActivity(callback: String)
-GET		/activity					controllers.Application.activity(id: Long, callback: String)
-GET 	/addActivity				controllers.Application.addTestActivity()
+GET		/activities					controllers.Application.activities()
+GET		/activity					controllers.Application.activity(id: Long)
+POST 	/activity					controllers.Application.addActivity()
+GET 	/addTestActivity			controllers.Application.addTestActivity()
