@@ -1,0 +1,58 @@
+html, body {
+  color: #666;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.btn {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+h1 {
+	font-weight: 300;
+	padding-bottom: 20px;
+}
+
+.h1-right {
+	padding-top: 24px;
+	line-height: 3;
+}
+
+img {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.subtext {
+	font-size: 0.8em;
+	color: #888;
+}
+
+input {
+	-webkit-border-radius: 2px !important;
+	-moz-border-radius: 2px !important;
+	border-radius: 2px !important;
+}
+
+.modal {
+	-webkit-border-radius: 2px !important;
+	-moz-border-radius: 2px !important;
+	border-radius: 2px !important;
+}
+
+form {
+	margin: 0px;
+}
+
+.table td {
+	vertical-align: middle;
+}

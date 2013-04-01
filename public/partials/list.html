@@ -1,0 +1,77 @@
+
+<a class="right h1-right" ng-click="add()">
+  <i class="icon-plus-sign"></i> Ajouter une activité
+</a>
+
+<h1 class="left">Liste des activités</h1>
+
+<table class="table table-hover">
+  <tr ng-repeat="activity in activities">
+    <td>
+      <img ng-src="{{activity.image}}" class="left max-200"></img>
+    </td>
+
+    <td>
+      <span class="activity-name">{{activity.name}}</span><br />
+      <span class="activity-description">{{activity.description}}</span>
+    </td>
+
+    <td>
+      {{activity.type}}
+    </td>
+
+    <td>
+      <span class="label">{{activity.category}}</span>
+    </td>
+
+    <td>
+      <a ng-click="click(activity)"><i class="icon-pencil"></i></a>
+      <a ng-click="delete(activity)"><i class="icon-remove"></i></a>
+    </td>
+
+  </tr>
+
+  <div class="clearfix"></div>
+  <div ng-show="activities.length == 0" class="center">Aucune activité</div>
+
+</table>
+
+<div id="newActModal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Nouvelle activité</h3>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="inputName">Nom</label>
+        <div class="controls">
+          <input type="text" id="inputName" placeholder="Nom de l'activité" ng-model="currentActivity.name">
+        </div>
+      </div>
+       <div class="control-group">
+        <label class="control-label" for="inputDesc">Description</label>
+        <div class="controls">
+          <input type="text" id="inputDesc" placeholder="Brève description" ng-model="currentActivity.description">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputCategory">Catégorie</label>
+        <div class="controls">
+          <input type="text" id="inputCategory" placeholder="Catégorie" ng-model="currentActivity.category">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputImage">Image</label>
+        <div class="controls">
+          <img src="{{currentActivity.image}}" class="max-200"></img>
+          <input type="text" id="inputImage" placeholder="URL vers l'image" ng-model="currentActivity.image">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a data-dismiss="modal" class="btn">Fermer</a>
+    <a ng-click="addCurrentActivity()" class="btn btn-primary">Enregistrer</a>
+  </div>
+</div>

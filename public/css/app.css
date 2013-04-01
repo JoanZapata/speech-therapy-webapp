@@ -1,0 +1,117 @@
+.container {
+	width: 800px;
+	margin: 0px auto;
+}
+
+.content {	
+	padding: 40px 0px;
+}
+
+.center { width: 100%; text-align: center;}
+
+/* Header */
+
+.header {
+	font-size: 4em;
+	width: 100%;
+	line-height: 3;
+	text-align: center;
+	border-bottom: 1px solid #999;
+}
+
+.header .app {
+	color: #999;
+}
+
+.header i {
+	color: #999;
+}
+
+
+/* Footer */
+
+.footer {
+	width: 100%;
+	line-height: 3;
+	text-align: center;
+	border-top: 1px solid #999;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/* Login */
+
+fieldset {
+	text-align: center;
+}
+
+.vignette {
+	float: left;
+	margin-right: 5px;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid #EEE;
+}
+
+.vignette img {
+	width: 60px;
+}
+
+.vignette input {
+	width: 80%;
+}
+
+.vignette form {
+	text-align: left;
+}
+
+td.center {
+	vertical-align: middle;
+	text-align: center;
+}
+
+td.big {
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.login-password {
+	text-align: center;
+}
+
+/* List */
+.activity-name {
+	font-weight: bold;
+	font-size: 1.4em;
+	line-height: 1.8;
+}
+
+.activity-description {
+	font-size: 1.2em;
+	color: #AAA;
+}
+
+.max-200 {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+
+.max-50 {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.inline {
+	display: inline;
+}
+
+.padded {
+	padding: 10px;
+}

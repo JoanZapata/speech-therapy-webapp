@@ -8,15 +8,10 @@ object ApplicationBuild extends Build {
   val appVersion      = "1.0-SNAPSHOT"
 
   val appDependencies = Seq(
-    // Add your project dependencies here,
-    javaCore,
-    javaJdbc,
-    javaEbean,
-    "postgresql" % "postgresql" % "9.1-901-1.jdbc4"
+      "org.reactivemongo" %% "play2-reactivemongo" % "0.8"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
-    // Add your own project settings here     
   )
 
 }

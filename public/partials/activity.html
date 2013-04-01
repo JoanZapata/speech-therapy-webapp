@@ -1,0 +1,84 @@
+<a ng-click="back()">Retour</a>
+<br /><br />
+
+<table>
+	<tr>
+		<td>
+			<img src="{{activity.image}}" class="left max-200 padded"></img>
+		</td>
+		<td>
+			<span class="activity-name">{{activity.name}}</span><br />
+			<span class="activity-description">{{activity.description}}</span><br />
+			<span class="subtext">
+				Créée le {{activity.created | cdate}}, 
+				dernière modification le {{activity.modified | cdate}}.
+			</td>
+		</tr>
+	</table>
+
+	<br /><br />
+
+	<a class="right h1-right" ng-click="addPage()" ng-show="!(activity.pages == undefined || activity.pages.length == 0)">
+		<i class="icon-plus-sign"></i> Ajouter un mot
+	</a>
+	<h2 class="left">Liste des mots</h2>
+
+	<table class="table">
+
+		<tr ng-repeat="part in activity.pages">
+			<td class="big">
+				{{part.sound}}
+			</td>
+
+			<td>
+				<div class="vignette" ng-repeat="activityItem in part.words" data-toggle="modal" onclick="$('#modal{{activityItem.id}}').modal({});">
+					<img src="{{activityItem.image}}"/><br />
+					{{activityItem.text}}
+				</div>
+			</td>
+
+			<td>
+	      <a ng-click="delete(part)"><i class="icon-remove"></i></a>
+			</td>
+		</tr>
+
+		<div class="clearfix"></div>
+		<div ng-show="activity.pages == undefined || activity.pages.length == 0" class="center">
+			Aucun mot, <a ng-click="addPage()">ajouter un mot.</a>
+		</div>
+
+
+	</table>
+
+	<div id="newWordModal" class="modal hide fade">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>Ajouter un mot</h3>
+		</div>
+		<div class="modal-body">
+			<form class="form-horizontal">
+
+				<div class="control-group">
+					<label class="control-label" for="inputSound">Syllabe</label>
+					<div class="controls">
+						<input type="text" id="inputSound" ng-model="currentPage.sound"></input>
+					</div>
+				</div>
+
+				<div class="control-group" ng-repeat="page in currentPage.words">
+					<label class="control-label">Réponse</label>
+					<div class="controls">
+						<input type="text" placeholder="URL" ng-model="page.image">
+						<img src="{{page.image}}" class="max-50 inline"></img>	
+						<input type="text" placeholder="Nom" ng-model="page.text">
+						<i class="icon-ok" ng-show="isCorrectAnswer(page.text)"></i>
+					</div>
+				</div>
+
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a data-dismiss="modal" class="btn">Fermer</a>
+			<a ng-click="savePage()" class="btn btn-primary">Enregistrer</a>
+		</div>
+	</div>

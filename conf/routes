@@ -3,9 +3,10 @@
 # ~~~~
 
 # Home page
-OPTIONS	/*url						controllers.Application.options(url)
-GET     /                           controllers.Application.index()
-GET		/activities					controllers.Application.activities()
-GET		/activity					controllers.Application.activity(id: Long)
-POST 	/activity					controllers.Application.addActivity()
-GET 	/addTestActivity			controllers.Application.addTestActivity()
+GET		/activities					controllers.Application.findAll()
+POST 	/activities					controllers.Application.addActivity()
+GET 	/activities/:id				controllers.Application.findById(id: String)
+PUT 	/activities/:id				controllers.Application.updateActivity(id: String)
+DELETE 	/activities/:id				controllers.Application.deleteActivity(id: String)
+GET     /*file               		controllers.Assets.at(path="/public", file)
+GET     /               			controllers.Assets.at(path="/public", file="index.html")
