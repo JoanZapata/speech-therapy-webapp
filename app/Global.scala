@@ -2,18 +2,17 @@ import play.api.mvc._
 
 object Global extends WithFilters(KeyFilter)
 
+import play.api.Play
+
 object KeyFilter extends Filter {
+
   override def apply(next: RequestHeader => Result)(request: RequestHeader): Result = {
-//    println("hasKey:" + request.method)
-    
-//      println(request.queryString("key").mkString)
-//      println(request.queryString("key").mkString equals "tagartoy")
+    val password = Play.current.configuration.getString("app.password").get
     if (request.method != "GET" &&
       (!request.queryString.contains("key") ||
-        !request.queryString("key").mkString.equals("tagartoy"))) {
+        !request.queryString("key").mkString.equals(password)))
       Results.Forbidden
-    } else {
-      next(request)
-    }
+    else next(request)
   }
+
 }
