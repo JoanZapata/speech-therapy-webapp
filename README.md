@@ -1,2 +1,2 @@
-Speech therapy webapp [http://speech-therapy-webapp.herokuapp.com/](hosted by heroku).
+Speech therapy webapp [hoster by heroku](http://speech-therapy-webapp.herokuapp.com/).
 
